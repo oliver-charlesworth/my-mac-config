@@ -1,20 +1,21 @@
 set nocompatible
-set relativenumber
+set number
 set hlsearch
+
+set ruler
+
 set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smartindent
+set autoindent
+
 syntax on
 filetype plugin indent on
+
+set foldenable
+
 set background=dark
 colorscheme solarized
-set <Del>=
 set pastetoggle=<F10>
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>

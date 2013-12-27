@@ -25,6 +25,10 @@ plugins=(git git-flow scala brew osx)
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:/Users/oliverc/projects/pg/distributions/pg3111/bin/unix:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+export PATH=$PATH:/Users/oliverc/tools/trails/bin/unix
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 
 setopt PUSHDSILENT
 
