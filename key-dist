@@ -1,6 +1,12 @@
 #!/bin/bash
 set -u -e
 
+if [ "$#" -ne 2 ]; then
+	echo "Usage:"
+	echo "  $0 <user> <host>"
+	exit 1
+fi
+
 
 user=$1
 host=$2
