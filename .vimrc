@@ -69,3 +69,8 @@ nmap <C-y> "+y
 nmap <C-p> "+p
 vmap <C-y> "+y
 vmap <C-p> "+p
+
+"----------------------
+" Other stuff
+"----------------------
+au BufReadCmd *.par,*.ont call zip#Browse(expand("<amatch>"))
