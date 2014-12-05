@@ -1,0 +1,13 @@
+#! /bin/bash
+set -eu
+
+SOURCE=$1
+DEST=$2
+
+DIR=/tmp/tmp.git
+
+git clone --mirror ${SOURCE} ${LOCAL}
+cd ${LOCAL}
+git push --mirror ${DEST}
+cd -
+rm -rf ${DIR}
