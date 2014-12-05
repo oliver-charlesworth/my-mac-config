@@ -1,0 +1,14 @@
+#! /bin/sh
+
+if [ "$(ls -A .)" ]; then
+	echo "Directory is not empty"
+	exit 1
+fi
+
+git archive --remote=git@stash:gradle/gradle-wrapper-bootstrap.git master | tar -x
+cp -r ~/repos/template/. .
+find . -name ".gitkeep" -delete
+rm -rf .git
+git flow init -t
+git add .
+git commit -m "Template Gradle project"

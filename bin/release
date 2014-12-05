@@ -1,0 +1,22 @@
+#! /bin/bash
+set -eu
+
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "develop" ]; then
+	echo "Must be on develop branch"
+	exit 1
+fi
+
+if [ "$#" -eq 1 ]; then
+	VERSION="v$1"
+else
+	VERSION=$(git describe --abbrev=0 | sed 's/-dev//')
+fi
+
+export GIT_MERGE_AUTOEDIT=no
+git pull --rebase=preserve
+git flow release start ${VERSION}
+git flow release finish ${VERSION}
+git push origin master --follow-tags
+git push origin develop --follow-tags
+
+
