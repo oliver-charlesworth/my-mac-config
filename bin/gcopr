@@ -11,5 +11,5 @@ num=$1
 
 local_branch=pr/${num}
 
-git fetch origin refs/pull-requests/12/from:${local_branch}
+git fetch origin refs/pull-requests/${num}/from:${local_branch}
 git checkout ${local_branch}

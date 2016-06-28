@@ -1,6 +1,8 @@
 #! /bin/bash
 set -eu
 
+git checkout develop
+
 if [ "$(git rev-parse --abbrev-ref HEAD)" != "develop" ]; then
 	echo "Must be on develop branch"
 	exit 1

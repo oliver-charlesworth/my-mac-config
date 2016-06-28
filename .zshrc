@@ -21,12 +21,11 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git git-flow scala brew osx)
+plugins=(git git-flow scala brew osx vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$PATH
-
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$PATH:~/.my-mac-config/bin
 
 
 setopt PUSHDSILENT
@@ -45,12 +44,21 @@ alias pcat='pygmentize -f terminal256 -O style=native -g'
 alias gw='./gradlew'
 alias zshrc='. ~/.zshrc'
 
+# Palantir-specific stuff
+
+function docker-shell() {
+    docker exec -i -t "$1" /bin/bash
+}
+
+function docker-cleanup() {
+    docker rm -f $(docker ps -aq)
+    docker network rm $(docker network ls -q)
+}
 
 # Mac-specific stuff
 
-export PATH=$PATH:/Users/oliverc/repos/pgm
 export PATH=$PATH:/Users/oliverc/tools/trails/bin/unix
 export JAVA_HOME=$(/usr/libexec/java_home)
-export QSPATH=/usr/local/Cellar/palantir-gotham-311/3.11.1.2
 alias readlink='greadlink'
 alias makesafe='sudo xattr -d -r com.apple.quarantine'
+alias bastionShare='ssh -fN bastion'
