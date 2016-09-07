@@ -51,8 +51,8 @@ function docker-shell() {
 }
 
 function docker-cleanup() {
-    docker rm -f $(docker ps -aq)
-    docker network rm $(docker network ls -q)
+    docker ps -aq | xargs docker rm -vf
+    docker network ls -qf type=custom | xargs docker network rm
 }
 
 # Mac-specific stuff
