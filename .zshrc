@@ -21,7 +21,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git git-flow scala brew osx vagrant)
+plugins=(git git-flow scala brew osx vagrant docker docker-compose kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,11 +40,11 @@ alias g='git'
 alias gff='git flow feature'
 alias ll='ls -lG'
 alias hlog='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
-alias pcat='pygmentize -f terminal256 -O style=native -g'
 alias gw='./gradlew'
 alias zshrc='. ~/.zshrc'
+alias k='kubectl'
 
-# Palantir-specific stuff
+# Docker stuff
 
 function docker-shell() {
     docker exec -i -t "$1" /bin/bash
@@ -57,8 +57,6 @@ function docker-cleanup() {
 
 # Mac-specific stuff
 
-export PATH=$PATH:/Users/oliverc/tools/trails/bin/unix
 export JAVA_HOME=$(/usr/libexec/java_home)
 alias readlink='greadlink'
 alias makesafe='sudo xattr -d -r com.apple.quarantine'
-alias bastionShare='ssh -fN bastion'
