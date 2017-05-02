@@ -1,10 +1,10 @@
 [user]
-	name = Oliver Charlesworth
-	email = oliver@quartic.io
+    name = Oliver Charlesworth
+    email = oliver@quartic.io
 [core]
-	editor = /usr/bin/vim
+    editor = /usr/bin/vim
     autocrlf = input
 [remote "origin"]
-	prune = true
+    prune = true
 [push]
-	default = current
+    default = current
