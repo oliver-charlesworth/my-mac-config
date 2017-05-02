@@ -25,7 +25,7 @@ plugins=(git git-flow scala brew osx vagrant docker docker-compose kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$PATH:~/.my-mac-config/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$PATH:~/.my-mac-config/bin:~/.cargo/bin
 
 
 setopt PUSHDSILENT
@@ -42,18 +42,28 @@ alias ll='ls -lG'
 alias hlog='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
 alias gw='./gradlew'
 alias zshrc='. ~/.zshrc'
+alias dc='docker-compose'
+
+# Kubernetes aliases
 alias k='kubectl'
+alias kpf='kubectl port-forward'
 
 # Docker stuff
 
 function docker-shell() {
-    docker exec -i -t "$1" /bin/bash
+    docker exec -i -t "$1" /bin/sh
 }
 
 function docker-cleanup() {
     docker ps -aq | xargs docker rm -vf
     docker network ls -qf type=custom | xargs docker network rm
 }
+
+# Android stuff
+
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 # Mac-specific stuff
 
