@@ -21,7 +21,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git git-flow scala brew osx vagrant docker docker-compose kubectl)
+plugins=(git git-flow scala brew osx vagrant docker docker-compose kubectl python virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,10 +43,21 @@ alias hlog='git log --date-order --all --graph --format="%C(green)%h%Creset %C(y
 alias gw='./gradlew'
 alias zshrc='. ~/.zshrc'
 alias dc='docker-compose'
+alias richard='brew'
 
 # Kubernetes aliases
+
 alias k='kubectl'
 alias kpf='kubectl port-forward'
+
+# Python stuff
+
+function venv() {
+    if [ ! -d .env ]; then
+        virtualenv .env --python=`which python3`
+    fi
+    source .env/bin/activate
+}
 
 # Docker stuff
 
