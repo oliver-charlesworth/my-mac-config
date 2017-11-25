@@ -21,7 +21,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git git-flow scala brew osx vagrant docker docker-compose kubectl python virtualenv)
+plugins=(git git-flow scala brew osx vagrant docker docker-compose kubectl python virtualenv aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,9 +41,13 @@ alias gff='git flow feature'
 alias ll='ls -lG'
 alias hlog='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
 alias gw='./gradlew'
+alias gfi='git clean -df && git reset --hard'
+alias greg='git pull --rebase && git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias zshrc='. ~/.zshrc'
 alias dc='docker-compose'
+alias tf='terraform'
 alias richard='brew'
+alias chode='chown'
 
 # Kubernetes aliases
 
