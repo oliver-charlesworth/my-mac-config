@@ -15,13 +15,15 @@ CASE_SENSITIVE="true"
 DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
+setopt HIST_IGNORE_SPACE
+
 
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git git-flow scala brew osx vagrant docker docker-compose kubectl python virtualenv aws)
+plugins=(git brew osx docker docker-compose kubectl python virtualenv aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -35,14 +37,10 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 ####################
 # Aliases
 ####################
-alias unstage='git reset HEAD'
 alias g='git'
-alias gff='git flow feature'
 alias ll='ls -lG'
-alias hlog='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
 alias gw='./gradlew'
 alias gfi='git clean -df && git reset --hard'
-alias greg='git pull --rebase && git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias zshrc='. ~/.zshrc'
 alias dc='docker-compose'
 alias tf='terraform'
@@ -56,12 +54,15 @@ alias kpf='kubectl port-forward'
 
 # Python stuff
 
+export PATH=$PATH:~/miniconda3/bin
+
 function venv() {
     if [ ! -d .env ]; then
         virtualenv .env --python=`which python3`
     fi
     source .env/bin/activate
 }
+
 
 # Docker stuff
 
@@ -74,14 +75,14 @@ function docker-cleanup() {
     docker network ls -qf type=custom | xargs docker network rm
 }
 
-# Android stuff
-
-export ANDROID_HOME=${HOME}/Library/Android/sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-
 # Mac-specific stuff
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 alias readlink='greadlink'
 alias makesafe='sudo xattr -d -r com.apple.quarantine'
+
+# TSIQ-specific stuff
+alias oinit="eval \$(op signin team_tsiq)"
+
+# added by travis gem
+[ -f /Users/oliver/.travis/travis.sh ] && source /Users/oliver/.travis/travis.sh

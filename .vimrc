@@ -50,13 +50,13 @@ set number
 set ruler
 set showmatch
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 "set list
 "set listchars=tab:\|_,trail:.,extends:#,nbsp:.
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=green
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
-au VimEnter * :IndentGuidesEnable
+let g:indent_guides_enable_on_vim_startup = 1
 
 "----------------------
 " Key mappings
