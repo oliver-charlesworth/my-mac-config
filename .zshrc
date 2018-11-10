@@ -27,34 +27,18 @@ plugins=(git brew osx docker docker-compose kubectl python virtualenv aws)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$PATH:~/.my-mac-config/bin:~/.cargo/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:$PATH:~/.my-mac-config/bin:~/.cargo/bin:~/go/bin
 
 
 setopt PUSHDSILENT
 
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-####################
-# Aliases
-####################
-alias g='git'
-alias ll='ls -lG'
-alias gw='./gradlew'
-alias gfi='git clean -df && git reset --hard'
+source ~/.my-shell-aliases
+
 alias zshrc='. ~/.zshrc'
-alias dc='docker-compose'
-alias tf='terraform'
-alias richard='brew'
-alias chode='chown'
-
-# Kubernetes aliases
-
-alias k='kubectl'
-alias kpf='kubectl port-forward'
 
 # Python stuff
-
-export PATH=$PATH:~/miniconda3/bin
 
 function venv() {
     if [ ! -d .env ]; then
@@ -81,8 +65,4 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 alias readlink='greadlink'
 alias makesafe='sudo xattr -d -r com.apple.quarantine'
 
-# TSIQ-specific stuff
-alias oinit="eval \$(op signin team_tsiq)"
 
-# added by travis gem
-[ -f /Users/oliver/.travis/travis.sh ] && source /Users/oliver/.travis/travis.sh
