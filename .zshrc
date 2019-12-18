@@ -27,18 +27,23 @@ plugins=(git brew osx docker docker-compose kubectl python virtualenv aws)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=/usr/local/sbin:/usr/local/bin:$PATH:~/.my-mac-config/bin:~/.cargo/bin:~/go/bin:~/.krew/bin
-export PATH="$PATH:/Users/oliver/.local/bin" # pipx
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH:~/.my-mac-config/bin
 
 
 setopt PUSHDSILENT
 
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-source ~/.my-shell-aliases
-source ~/.my-shell-secrets
-
 alias zshrc='. ~/.zshrc'
+alias g='git'
+alias ll='ls -lG'
+alias gw='./gradlew'
+alias gfi='git clean -df && git reset --hard'
+alias grom='git rebase --onto master'
+alias dc='docker-compose'
+alias tf='terraform'
+alias k='kubectl'
+alias kpf='kubectl port-forward'
 
 
 # Python stuff
@@ -64,6 +69,3 @@ function docker-cleanup() {
 
 # Mac-specific stuff
 
-export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
-alias readlink='greadlink'
-alias makesafe='sudo xattr -d -r com.apple.quarantine'
