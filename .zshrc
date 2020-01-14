@@ -27,12 +27,13 @@ plugins=(git brew osx docker docker-compose kubectl python virtualenv aws)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=/usr/local/sbin:/usr/local/bin:$PATH:~/.my-mac-config/bin
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH:~/.my-mac-config/bin:~/.poetry/bin
 
 
 setopt PUSHDSILENT
 
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+export CLICOLOR=YES
 
 alias zshrc='. ~/.zshrc'
 alias g='git'
